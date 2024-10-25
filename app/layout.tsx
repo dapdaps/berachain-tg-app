@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from "react";
 import "./globals.css";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
@@ -8,6 +9,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    async function loadWalletSdk() {
+      if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+        const VConsole = await import('vconsole');
+        new VConsole.default();
+      }
+    }
+    loadWalletSdk();
+  }, []);
+
   return (
     <html lang="en">
       <head>

@@ -4,12 +4,29 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import { Address } from "@ton/core";
 
+import WebApp from '@twa-dev/sdk'
+
+interface UserData {
+  id: number;
+  username?: string;
+  is_premium?: boolean;
+}
+
+
 export default function Home() {
   const [tonConnectUI] = useTonConnectUI();
   const [tonWalletAddress, setTonWalletAddress] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isUIReady, setIsUIReady] = useState(false);
+  const [userData, setUserData] = useState<UserData | null>(null)
+  
+  useEffect(() => {
+    if (WebApp.initDataUnsafe.user) {
+      setUserData(WebApp.initDataUnsafe.user as UserData)
+    }
+  }, [])
 
+  
   const handleWalletConnection = useCallback((address: string) => {
     setTonWalletAddress(address);
     console.log("Wallet connected successfully!");
@@ -137,6 +154,20 @@ export default function Home() {
           Connect TON Wallet
         </button>
       )}
+
+      {userData ? (
+        <>
+          <h1 className="text-2xl font-bold mb-4 text-white">User Data</h1>
+          <ul>
+            <li className='text-xl font-bold mb-4 text-white'>ID: {userData.id}</li>
+            <li className='text-xl font-bold mb-4 text-white'>Username: {userData.username || 'N/A'}</li>
+            <li className='text-xl font-bold mb-4 text-white'>Is Premium: {userData.is_premium ? 'Yes' : 'No'}</li>
+          </ul>
+        </>
+      ) : (
+        <div className='font-bold mt-4 mb-4 text-white'>Plz open in Telegram</div>
+      )}
+
     </main>
   );
 }

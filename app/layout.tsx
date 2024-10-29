@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import "./globals.css";
+import 'swiper/css';
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
       <head>
         <title>DapDap TON Connect Demo</title>
       </head>
-      <body className=" bg-black">
+      <body className=" bg-[#96D6FF]">
       <TonConnectUIProvider manifestUrl="https://indigo-giant-barnacle-872.mypinata.cloud/ipfs/QmbQiEqpowNuQHPDSXZQcakoiWTb3YDZb76VQC8mRLKqW7">
           {children}
         </TonConnectUIProvider>

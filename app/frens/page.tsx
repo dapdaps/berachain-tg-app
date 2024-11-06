@@ -35,9 +35,7 @@ const Frens = (props: any) => {
           </div>
         </div>
         <div className="pt-[1.375rem] pb-[1rem] px-[0.375rem]">
-          <svg width="334" height="1" viewBox="0 0 334 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line y1="0.5" x2="334" y2="0.5" stroke="#4B371F" strokeDasharray="2 2" />
-          </svg>
+          <div className="w-full h-[1px] bg-[url('/images/dash-line.svg')]"></div>
         </div>
         <div className="flex flex-col px-[1rem] items-stretch gap-[1.25rem] max-h-[calc(100vh_-_24rem)] overflow-y-auto">
           {

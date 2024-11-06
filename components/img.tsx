@@ -112,8 +112,8 @@ export interface Props {
   src: string;
   fallbackSrc?: string | React.ReactNode;
   alt?: string;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   className?: string;
   containerClassName?: string;
   style?: React.CSSProperties;

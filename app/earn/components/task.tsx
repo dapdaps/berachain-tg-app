@@ -8,22 +8,22 @@ const Task = (props: Props) => {
 
   return (
     <Card className={`w-full ${className}`} style={style}>
-      <div className="flex items-center gap-[11px]">
+      <div className="flex items-center gap-[0.687500rem]">
         <LazyImage
           src={icon as string}
-          width={58}
-          height={58}
+          width="3.625rem"
+          height="3.625rem"
         />
         <div className="flex flex-col">
           <div className="">{title}</div>
-          <Reward className="mt-[9px]">
+          <Reward className="mt-[0.562500rem]">
             +{reward}
           </Reward>
         </div>
         <div className="ml-auto flex justify-end items-center">
           {
             finished ? (
-              <LazyImage src="/images/icon-done.svg" width={24} height={24} />
+              <LazyImage src="/images/icon-done.svg" width="1.500000rem" height="1.500000rem" />
             ) : (
               <Button>
                 Start
